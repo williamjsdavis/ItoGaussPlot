@@ -2,6 +2,7 @@
 An example of the calculation and displaying of Ito-Gauss plots. Calculations are a measure of the variability of linear trends <img src="https://render.githubusercontent.com/render/math?math=B"> in a time-series observation, as a function of windowing length, <img src="https://render.githubusercontent.com/render/math?math=w">.
 
 <img src="https://render.githubusercontent.com/render/math?math=x(t)=A+Bt">
+![equation](https://latex.codecogs.com/gif.latex?x(t)=A&plus;Bt)
 
 For more details, see:
 
