@@ -52,7 +52,7 @@ where <img src="https://render.githubusercontent.com/render/math?math=f(x)"> is 
 ```R
 windowsTheory <- 10^seq(-1,2,len=50)
 slopeStdsTheory <- OUanalytic(windowsTheory, dataVars$gamma, dataVars$D)
-slopeStdsTheoryLimit <- OUanalyticSmallW(windowsTheory, dataVars$gamma, dataVars$D)
+slopeStdsTheoryLimit <- OUanalytic(windowsTheory, dataVars$gamma, dataVars$D, "smallW")
 ```
 
 Below is a plot comparing the numerical calculations and the theoretical values.
