@@ -3,6 +3,7 @@ An example of the calculation and displaying of Ito-Gauss plots. Calculations ar
 
 <img src="https://render.githubusercontent.com/render/math?math=x(t)=A+Bt">
 ![equation](https://latex.codecogs.com/gif.latex?x(t)=A&plus;Bt)
+<img src="https://latex.codecogs.com/gif.latex?x(t)=A&plus;Bt" /> 
 
 For more details, see:
 
