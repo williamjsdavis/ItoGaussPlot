@@ -1,12 +1,11 @@
 Package: ItoGaussPlot
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Calculate Ito-Gauss plot
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: William Davis
+Maintainer: William Davis <williamjsdavis@berkeley.edu>
+Description: A measure of the variability of linear trends in a time-series observation, as a function of windowing length
+License: MIT
 Encoding: UTF-8
 LazyData: true
 Suggests: 

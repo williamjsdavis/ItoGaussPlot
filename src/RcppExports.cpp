@@ -5,52 +5,6 @@
 
 using namespace Rcpp;
 
-// timesTwo
-NumericVector timesTwo(NumericVector x);
-RcppExport SEXP _ItoGaussPlot_timesTwo(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(timesTwo(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// muRcpp
-double muRcpp(NumericVector x);
-RcppExport SEXP _ItoGaussPlot_muRcpp(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(muRcpp(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// varRcpp
-double varRcpp(NumericVector x);
-RcppExport SEXP _ItoGaussPlot_varRcpp(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(varRcpp(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// varRcpp2
-double varRcpp2(NumericVector x, int a, bool bias);
-RcppExport SEXP _ItoGaussPlot_varRcpp2(SEXP xSEXP, SEXP aSEXP, SEXP biasSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    Rcpp::traits::input_parameter< int >::type a(aSEXP);
-    Rcpp::traits::input_parameter< bool >::type bias(biasSEXP);
-    rcpp_result_gen = Rcpp::wrap(varRcpp2(x, a, bias));
-    return rcpp_result_gen;
-END_RCPP
-}
 // slope
 double slope(NumericVector timeIn, NumericVector ampIn, int ii, int n);
 RcppExport SEXP _ItoGaussPlot_slope(SEXP timeInSEXP, SEXP ampInSEXP, SEXP iiSEXP, SEXP nSEXP) {
@@ -81,10 +35,6 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_ItoGaussPlot_timesTwo", (DL_FUNC) &_ItoGaussPlot_timesTwo, 1},
-    {"_ItoGaussPlot_muRcpp", (DL_FUNC) &_ItoGaussPlot_muRcpp, 1},
-    {"_ItoGaussPlot_varRcpp", (DL_FUNC) &_ItoGaussPlot_varRcpp, 1},
-    {"_ItoGaussPlot_varRcpp2", (DL_FUNC) &_ItoGaussPlot_varRcpp2, 3},
     {"_ItoGaussPlot_slope", (DL_FUNC) &_ItoGaussPlot_slope, 4},
     {"_ItoGaussPlot_varSlope", (DL_FUNC) &_ItoGaussPlot_varSlope, 4},
     {NULL, NULL, 0}
