@@ -1,6 +1,3 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
-})
 test_that("Uniform time, scalar output", {
   time <- seq(0, 10, len = 1000)
   amplitude <- sin(time)
@@ -24,6 +21,7 @@ test_that("Non-uniform time, scalar output", {
 test_that("Non-uniform time, vector output", {
   time <- seq(0, 10, len = 1000)
   timeExp <- 0.001 * exp(time)
+  amplitude <- sin(timeExp)
   N <- 5L
   out <- stdWindowSlopeCast(timeExp, amplitude, seq(0.1, 0.8, len = N))
   expect_equal(length(out), N)

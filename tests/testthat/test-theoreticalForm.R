@@ -1,6 +1,3 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
-})
 test_that("Scalar output", {
   out <- OUanalytic(0.1,1,1)
   expect_equal(length(out), 1L)
