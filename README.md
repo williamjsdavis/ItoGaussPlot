@@ -1,9 +1,9 @@
 # ItoGaussPlot
-An example of the calculation and displaying of Ito-Gauss plots. It is a measure of the variability of linear trends <img src="https://render.githubusercontent.com/render/math?math=B"> in a time-series observation, as a function of windowing length, <img src="https://render.githubusercontent.com/render/math?math=w">.
+An example of the calculation and displaying of Ito-Gauss plots. It is a measure of the variability of linear trends <img src="https://render.githubusercontent.com/render/math?math=B"> in a time-series observation, as a function of windowing length, <img src="https://render.githubusercontent.com/render/math?math=w">. Imagine splitting a time-series observation into chunks of length <img src="https://render.githubusercontent.com/render/math?math=w">, and fitting a line to each chunk
 
-<img src="https://latex.codecogs.com/gif.latex?x(t)=A&plus;Bt" /> 
+<img src="https://latex.codecogs.com/gif.latex?x(t)=A&plus;Bt." /> 
 
-For more details, see:
+What is the variance of all the linear components, <img src="https://render.githubusercontent.com/render/math?math=B">? For more details, see:
 
 - [Variability of Millennial‐Scale Trends in the Geomagnetic Axial Dipole, Buffett et al. (2019)](https://doi.org/10.1029/2019GL085909)
 - [Decadal global temperature variability increases strongly with climate sensitivity, Nijsse et al. (2019)](https://doi.org/10.1038/s41558-019-0527-4)
