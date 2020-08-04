@@ -1,4 +1,4 @@
 #exportPattern("^[[:alpha:]]+")
+import(mathjaxr)
 export("OUanalytic")
-export("OUanalyticSmallW")
 export("stdWindowSlopeCast")
