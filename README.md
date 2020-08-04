@@ -32,7 +32,7 @@ plot(time, amplitude, type = 'l',
      main='Ornstein-Uhlenbeck integration',
      xlab='Time', ylab='Amplitude')
 ```
-<img src="https://user-images.githubusercontent.com/38541020/89318856-37247100-d634-11ea-9ae3-88d89558f145.jpg" width="400" height="auto"/>
+<img src="https://user-images.githubusercontent.com/38541020/89318856-37247100-d634-11ea-9ae3-88d89558f145.jpg" width="800" height="auto"/>
 
 Calculating the variability of trends as a function of windowing length is done with the `stdWindowSlopeCast()` function. The time vector, amplitude vector, and window length(s) are arguments.
 
@@ -69,7 +69,7 @@ legend("topright", legend=c("Theory", "Small w limit", "Calculation"),
        pt.cex=c(0,0,1), lwd=c(1.5,1.5,1), cex=0.8)
 ```
 
-<img src="https://user-images.githubusercontent.com/38541020/89319063-7c48a300-d634-11ea-9073-81cb3d20c723.jpg" width="400" height="auto"/>
+<img src="https://user-images.githubusercontent.com/38541020/89319063-7c48a300-d634-11ea-9073-81cb3d20c723.jpg" width="800" height="auto"/>
 
 ## Uneven time-steps
 The package uses a different algorthm for unevenly spaces time-series.
@@ -90,7 +90,7 @@ hist(diff(timeNU),
      xlab='Time-step', ylab='Counts')
 ```
 
-<img src="https://user-images.githubusercontent.com/38541020/89319152-971b1780-d634-11ea-867b-8179dabf3def.jpg" width="400" height="auto"/>
+<img src="https://user-images.githubusercontent.com/38541020/89319152-971b1780-d634-11ea-867b-8179dabf3def.jpg" width="800" height="auto"/>
 
 The `stdWindowSlopeCast()` function is used again, but theuneven timesteps in the time vector cause a different method to be called.
 
@@ -112,4 +112,4 @@ legend("topright", legend=c("Theory", "Small w limit", "Calculation"),
        pt.cex=c(0,0,1), lwd=c(1.5,1.5,1), cex=0.8)
 ```
 
-<img src="https://user-images.githubusercontent.com/38541020/89319326-cfbaf100-d634-11ea-8cef-5942ce5d6f5f.jpg" width="400" height="auto"/>
+<img src="https://user-images.githubusercontent.com/38541020/89319326-cfbaf100-d634-11ea-8cef-5942ce5d6f5f.jpg" width="800" height="auto"/>
