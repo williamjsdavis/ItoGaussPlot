@@ -1,8 +1,6 @@
 # ItoGaussPlot
 An example of the calculation and displaying of Ito-Gauss plots. Calculations are a measure of the variability of linear trends <img src="https://render.githubusercontent.com/render/math?math=B"> in a time-series observation, as a function of windowing length, <img src="https://render.githubusercontent.com/render/math?math=w">.
 
-<img src="https://render.githubusercontent.com/render/math?math=x(t)=A+Bt">
-![equation](https://latex.codecogs.com/gif.latex?x(t)=A&plus;Bt)
 <img src="https://latex.codecogs.com/gif.latex?x(t)=A&plus;Bt" /> 
 
 For more details, see:
@@ -19,7 +17,7 @@ library(rmatio)
 
 For this example, we will consider the Ornstein-Ulhenbeck process, 
 
-<img src="https://render.githubusercontent.com/render/math?math=dx_t=-\gamma x_t dt + \sqrt{D}dW_t">
+<img src="https://latex.codecogs.com/gif.latex?dx_t=-\gamma&space;x_t&space;dt&space;&plus;&space;\sqrt{D}dW_t" /> 
 
 where <img src="https://render.githubusercontent.com/render/math?math=x_t"> is the amplitude as a function of time, <img src="https://render.githubusercontent.com/render/math?math=\gamma"> is the slope of the drift term, <img src="https://render.githubusercontent.com/render/math?math=\sqrt{D}"> is the amplitude of the noise, and <img src="https://render.githubusercontent.com/render/math?math=W_t"> is a [Wiener process](https://en.wikipedia.org/wiki/Wiener_process). A previously calculated realization of this process (calculated using the [Euler-Maruyama method](https://en.wikipedia.org/wiki/Euler–Maruyama_method)) is loaded.
 
@@ -45,11 +43,11 @@ slopeStds <- stdWindowSlopeCast(time, amplitude, windows)
 
 For the Ornstein-Ulhenbeck process, a closed form expression of slope variability can be derived.
 
-<img src="https://render.githubusercontent.com/render/math?math=\sigma_B(w) = \sqrt{24\gamma D f(\gamma w)}">
+<img src="https://latex.codecogs.com/gif.latex?\sigma_B(w)&space;=&space;\sqrt{24\gamma&space;D&space;f(\gamma&space;w)}" /> 
 
 where <img src="https://render.githubusercontent.com/render/math?math=f(x)"> is the function
 
-<img src="https://render.githubusercontent.com/render/math?math=f(x) = x^{-3}-3x^{-4}+12x^{-6}-e^{-x}\Big(3x^{-4}+12x^{-5}+12x^{-6}\Big).">
+<img src="https://latex.codecogs.com/gif.latex?f(x)&space;=&space;x^{-3}-3x^{-4}&plus;12x^{-6}-e^{-x}\Big(3x^{-4}&plus;12x^{-5}&plus;12x^{-6}\Big)." /> 
 
 ```{r}
 windowsTheory <- 10^seq(-1,2,len=50)
