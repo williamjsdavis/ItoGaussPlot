@@ -34,31 +34,10 @@ stdWindowSlopeUniform <-
 
     n <- windowSteps
     N <- Nwindows
-    sum <- 0
-    sumSq <- 0
 
-    for (i in 1:Nwindows) {
-      ii <- iStart[i]
-      sumX <- 0
-      sumY <- 0
-      sumXY <- 0
-      sumXX <- 0
-      for (j in 1:windowSteps) {
-        sumX <- sumX + timeIn[ii]
-        sumY <- sumY + ampIn[ii]
-        sumXY <- sumXY + timeIn[ii] * ampIn[ii]
-        sumXX <- sumXX + timeIn[ii] * timeIn[ii]
-        ii <- ii + 1
-      }
-      # Slope of windowed section
-      B <- (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX)
+    # Call C++ subroutines
+    sqrt(varSlope(timeIn, ampIn, n, N))
 
-      sum <- sum + B
-      sumSq <- sumSq + B * B
-    }
-    # Variance of all slopes
-    varB <- (sumSq - (sum * sum) / N) / (N - 1)
-    sqrt(varB)
   }
 stdWindowSlopeNonUniform <-
   function(timeIn, ampIn, windowLength, Nt) {
@@ -74,19 +53,9 @@ stdWindowSlopeNonUniform <-
     for (i in 1:Nwindows) {
       n <- iEnd - iStart
       ii <- iStart
-      sumX <- 0
-      sumY <- 0
-      sumXY <- 0
-      sumXX <- 0
-      for (j in 1:n) {
-        sumX <- sumX + timeIn[ii]
-        sumY <- sumY + ampIn[ii]
-        sumXY <- sumXY + timeIn[ii] * ampIn[ii]
-        sumXX <- sumXX + timeIn[ii] * timeIn[ii]
-        ii <- ii + 1
-      }
-      # Slope of windowed section
-      B <- (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX)
+
+      # Call C++ subroutine
+      B <- slope(timeIn, ampIn, ii-1, n)
 
       sum <- sum + B
       sumSq <- sumSq + B * B
