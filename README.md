@@ -1,5 +1,5 @@
 # ItoGaussPlot
-An example of the calculation and displaying of Ito-Gauss plots. Calculations are a measure of the variability of linear trends <img src="https://render.githubusercontent.com/render/math?math=B"> in a time-series observation, as a function of windowing length, <img src="https://render.githubusercontent.com/render/math?math=w">.
+An example of the calculation and displaying of Ito-Gauss plots. It is a measure of the variability of linear trends <img src="https://render.githubusercontent.com/render/math?math=B"> in a time-series observation, as a function of windowing length, <img src="https://render.githubusercontent.com/render/math?math=w">.
 
 <img src="https://latex.codecogs.com/gif.latex?x(t)=A&plus;Bt" /> 
 
@@ -10,7 +10,7 @@ For more details, see:
 
 Import libraries for calculations and getting data.
 
-```{r}
+```{R}
 library(ItoGaussPlot)
 library(rmatio)
 ```
@@ -21,7 +21,7 @@ For this example, we will consider the Ornstein-Ulhenbeck process,
 
 where <img src="https://render.githubusercontent.com/render/math?math=x_t"> is the amplitude as a function of time, <img src="https://render.githubusercontent.com/render/math?math=\gamma"> is the slope of the drift term, <img src="https://render.githubusercontent.com/render/math?math=\sqrt{D}"> is the amplitude of the noise, and <img src="https://render.githubusercontent.com/render/math?math=W_t"> is a [Wiener process](https://en.wikipedia.org/wiki/Wiener_process). A previously calculated realization of this process (calculated using the [Euler-Maruyama method](https://en.wikipedia.org/wiki/Euler–Maruyama_method)) is loaded.
 
-```{r}
+```{R}
 data <- read.mat('tX_g1D1e0.dat')
 time <- data$tX[1,]
 amplitude <- data$tX[2,]
@@ -36,7 +36,7 @@ plot(time, amplitude, type = 'l',
 
 Calculating the variability of trends as a function of windowing length is done with the `stdWindowSlopeCast()` function. The time vector, amplitude vector, and window length(s) are arguments.
 
-```{r}
+```{R}
 windows <- 10^seq(-1,2,len=20)
 slopeStds <- stdWindowSlopeCast(time, amplitude, windows)
 ```
@@ -49,7 +49,7 @@ where <img src="https://render.githubusercontent.com/render/math?math=f(x)"> is 
 
 <img src="https://latex.codecogs.com/gif.latex?f(x)&space;=&space;x^{-3}-3x^{-4}&plus;12x^{-6}-e^{-x}\Big(3x^{-4}&plus;12x^{-5}&plus;12x^{-6}\Big)." /> 
 
-```{r}
+```{R}
 windowsTheory <- 10^seq(-1,2,len=50)
 slopeStdsTheory <- OUanalytic(windowsTheory, dataVars$gamma, dataVars$D)
 slopeStdsTheoryLimit <- OUanalyticSmallW(windowsTheory, dataVars$gamma, dataVars$D)
@@ -57,7 +57,7 @@ slopeStdsTheoryLimit <- OUanalyticSmallW(windowsTheory, dataVars$gamma, dataVars
 
 Below is a plot comparing the numerical calculations and the theoretical values.
 
-```{r}
+```{R}
 plot(windowsTheory, slopeStdsTheory, 
      log='xy', type = 'l',
      main='Standard deviation of slope by windowing',
@@ -74,7 +74,7 @@ legend("topright", legend=c("Theory", "Small w limit", "Calculation"),
 ## Uneven time-steps
 The package uses a different algorthm for unevenly spaces time-series.
 
-```{r}
+```{R}
 data <- read.mat('tX_g1D1e0NU.dat')
 timeNU <- data$tX[1,]
 amplitudeNU <- data$tX[2,]
@@ -94,13 +94,13 @@ hist(diff(timeNU),
 
 The `stdWindowSlopeCast()` function is used again, but theuneven timesteps in the time vector cause a different method to be called.
 
-```{r}
+```{R}
 slopeStdsNU <- stdWindowSlopeCast(timeNU, amplitudeNU, windows)
 ```
 
 Below is a plot comparing the numerical calculations and the theoretical values.
 
-```{r}
+```{R}
 plot(windowsTheory, slopeStdsTheory, 
      log='xy', type = 'l',
      main='Standard deviation of slope by windowing',
