@@ -8,7 +8,8 @@ Description: A measure of the variability of linear trends in a time-series obse
 License: MIT
 Encoding: UTF-8
 LazyData: true
-Suggests: 
+Suggests:
+    foreach
     testthat,
     mathjaxr
 RdMacros: mathjaxr
