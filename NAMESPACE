@@ -2,6 +2,7 @@
 useDynLib(ItoGaussPlot)
 import(mathjaxr)
 import(Rcpp)
+import(foreach)
 export("OUanalytic")
 export("stdWindowSlopeCast")
 export("slope")

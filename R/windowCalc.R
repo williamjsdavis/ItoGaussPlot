@@ -20,7 +20,8 @@ stdWindowSlopeCast <- function(timeIn, ampIn, windows) {
     stepHandle(windows)
   } else {
     out <- windows
-    for (i in 1:N) {
+    foreach(i = 1:N) %do% {
+    #for (i in 1:N) {
       out[i] <- stepHandle(windows[i])
     }
     out
@@ -46,6 +47,43 @@ stdWindowSlopeNonUniform <-
     tStart <- 0
     iStart <- 1L
     iEnd <- findInterval(windowLength, timeIn)
+
+    N <- Nwindows
+    sum <- 0
+    sumSq <- 0
+    for (i in 1:Nwindows) {
+      n <- iEnd - iStart
+      ii <- iStart
+
+      # Call C++ subroutine
+      B <- slope(timeIn, ampIn, ii-1, n)
+
+      sum <- sum + B
+      sumSq <- sumSq + B * B
+
+      tStart <- tStart + windowLength
+      iStart <- iEnd
+      iEnd <- findInterval(tStart + windowLength, timeIn)
+    }
+    # Variance of all slopes
+    varB <- (sumSq - (sum * sum) / N) / (N - 1)
+    sqrt(varB)
+  }
+stdWindowSlopeNonUniform2 <-
+  function(timeIn, ampIn, windowLength, Nt) {
+    tEnd <- tail(timeIn, n = 1)
+    Nwindows <- floor(tEnd / windowLength)
+
+    tStart <- seq(timeIn[1], tEnd, by=windowLength)
+    iStart <- seq(0L, Nwindows)
+    iEnd <- iStart
+
+    iStart[1] <- 1L
+    iEnd[1] <- findInterval(windowLength, timeIn)
+    for (i in 2:Nwindows) {
+      iStart[i] <- iEnd[i-1]
+      iEnd[i] <- findInterval(tStart[i+1], timeIn)
+    }
 
     N <- Nwindows
     sum <- 0
