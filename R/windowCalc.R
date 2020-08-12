@@ -19,10 +19,11 @@ stdWindowSlopeCast <- function(timeIn, ampIn, windows) {
   if (N == 1) {
     stepHandle(windows)
   } else {
-    out <- windows
-    foreach(i = 1:N) %do% {
+    #out <- windows
+    out <- foreach(i = windows, .combine='c') %do% {
     #for (i in 1:N) {
-      out[i] <- stepHandle(windows[i])
+      #out[i] <- stepHandle(windows[i])
+      stepHandle(i)
     }
     out
   }
