@@ -4,7 +4,7 @@ stdWindowSlopeCast <- function(timeIn, ampIn, windows) {
   equalTsteps <-
     diff(range(diff(timeIn))) < .Machine$double.eps ^ 0.5
   if (equalTsteps) {
-    dt <- time[2] - time[1]
+    dt <- timeIn[2] - timeIn[1]
     stepHandle <-
       function(w)
         stdWindowSlopeUniform(timeIn, ampIn, w, dt, Nt)
