@@ -33,10 +33,25 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// varSlopeNU
+double varSlopeNU(NumericVector timeIn, NumericVector ampIn, double windowLength, int N);
+RcppExport SEXP _ItoGaussPlot_varSlopeNU(SEXP timeInSEXP, SEXP ampInSEXP, SEXP windowLengthSEXP, SEXP NSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type timeIn(timeInSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type ampIn(ampInSEXP);
+    Rcpp::traits::input_parameter< double >::type windowLength(windowLengthSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    rcpp_result_gen = Rcpp::wrap(varSlopeNU(timeIn, ampIn, windowLength, N));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_ItoGaussPlot_slope", (DL_FUNC) &_ItoGaussPlot_slope, 4},
     {"_ItoGaussPlot_varSlope", (DL_FUNC) &_ItoGaussPlot_varSlope, 4},
+    {"_ItoGaussPlot_varSlopeNU", (DL_FUNC) &_ItoGaussPlot_varSlopeNU, 4},
     {NULL, NULL, 0}
 };
 

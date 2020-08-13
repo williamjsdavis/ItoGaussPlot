@@ -11,7 +11,7 @@ stdWindowSlopeCast <- function(timeIn, ampIn, windows) {
   } else {
     stepHandle <-
       function(w)
-        stdWindowSlopeNonUniform(timeIn, ampIn, w, Nt)
+        stdWindowSlopeNonUniform2(timeIn, ampIn, w, Nt)
   }
 
   # Scalar or vector input?
@@ -19,11 +19,12 @@ stdWindowSlopeCast <- function(timeIn, ampIn, windows) {
   if (N == 1) {
     stepHandle(windows)
   } else {
-    #out <- windows
-    out <- foreach(i = windows, .combine='c') %do% {
-    #for (i in 1:N) {
-      #out[i] <- stepHandle(windows[i])
-      stepHandle(i)
+    #out <- foreach(i = windows, .combine='c') %dopar% {
+      #stepHandle(i)
+    #}
+    out <- windows
+    for (i in 1:N) {
+      out[i] <- stepHandle(windows[i])
     }
     out
   }
@@ -74,36 +75,9 @@ stdWindowSlopeNonUniform2 <-
   function(timeIn, ampIn, windowLength, Nt) {
     tEnd <- tail(timeIn, n = 1)
     Nwindows <- floor(tEnd / windowLength)
-
-    tStart <- seq(timeIn[1], tEnd, by=windowLength)
-    iStart <- seq(0L, Nwindows)
-    iEnd <- iStart
-
-    iStart[1] <- 1L
-    iEnd[1] <- findInterval(windowLength, timeIn)
-    for (i in 2:Nwindows) {
-      iStart[i] <- iEnd[i-1]
-      iEnd[i] <- findInterval(tStart[i+1], timeIn)
-    }
-
     N <- Nwindows
-    sum <- 0
-    sumSq <- 0
-    for (i in 1:Nwindows) {
-      n <- iEnd - iStart
-      ii <- iStart
 
-      # Call C++ subroutine
-      B <- slope(timeIn, ampIn, ii-1, n)
+    # Call C++ subroutines
+    sqrt(varSlopeNU(timeIn, ampIn, windowLength, N))
 
-      sum <- sum + B
-      sumSq <- sumSq + B * B
-
-      tStart <- tStart + windowLength
-      iStart <- iEnd
-      iEnd <- findInterval(tStart + windowLength, timeIn)
-    }
-    # Variance of all slopes
-    varB <- (sumSq - (sum * sum) / N) / (N - 1)
-    sqrt(varB)
   }

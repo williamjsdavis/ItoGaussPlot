@@ -9,3 +9,7 @@ varSlope <- function(timeIn, ampIn, n, N) {
     .Call('_ItoGaussPlot_varSlope', PACKAGE = 'ItoGaussPlot', timeIn, ampIn, n, N)
 }
 
+varSlopeNU <- function(timeIn, ampIn, windowLength, N) {
+    .Call('_ItoGaussPlot_varSlopeNU', PACKAGE = 'ItoGaussPlot', timeIn, ampIn, windowLength, N)
+}
+
