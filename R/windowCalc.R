@@ -11,7 +11,7 @@ stdWindowSlopeCast <- function(timeIn, ampIn, windows) {
   } else {
     stepHandle <-
       function(w)
-        stdWindowSlopeNonUniform2(timeIn, ampIn, w, Nt)
+        stdWindowSlopeNonUniform(timeIn, ampIn, w, Nt)
   }
 
   # Scalar or vector input?
@@ -19,13 +19,13 @@ stdWindowSlopeCast <- function(timeIn, ampIn, windows) {
   if (N == 1) {
     stepHandle(windows)
   } else {
-    #out <- foreach(i = windows, .combine='c') %dopar% {
-      #stepHandle(i)
-    #}
-    out <- windows
-    for (i in 1:N) {
-      out[i] <- stepHandle(windows[i])
+    out <- foreach(i = windows, .combine='c') %dopar% {
+      stepHandle(i)
     }
+    #out <- windows
+    #for (i in 1:N) {
+      #out[i] <- stepHandle(windows[i])
+    #}
     out
   }
 }
