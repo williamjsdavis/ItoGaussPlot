@@ -11,7 +11,7 @@ stdWindowSlopeCast <- function(timeIn, ampIn, windows) {
   } else {
     stepHandle <-
       function(w)
-        stdWindowSlopeNonUniform(timeIn, ampIn, w, Nt)
+        stdWindowSlopeNonUniform2(timeIn, ampIn, w, Nt)
   }
 
   # Scalar or vector input?
