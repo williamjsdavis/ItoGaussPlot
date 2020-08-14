@@ -2,8 +2,5 @@
 useDynLib(ItoGaussPlot)
 import(mathjaxr)
 import(Rcpp)
-import(doMC)
-import(foreach)
 export("OUanalytic")
 export("stdWindowSlopeCast")
-
