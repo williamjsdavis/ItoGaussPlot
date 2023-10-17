@@ -1,7 +1,7 @@
 # ItoGaussPlot
-An example of the calculation and displaying of Ito-Gauss plots. It is a measure of the variability of linear trends <img src="https://render.githubusercontent.com/render/math?math=B"> in a time-series observation, as a function of windowing length, <img src="https://render.githubusercontent.com/render/math?math=w">. Imagine splitting a time-series observation into chunks of length <img src="https://render.githubusercontent.com/render/math?math=w">, and fitting a line to each chunk
+An example of the calculation and displaying of Ito-Gauss plots. It is a measure of the variability of linear trends $B$ in a time-series observation, as a function of windowing length, $w$. Imagine splitting a time-series observation into chunks of length $w$, and fitting a line to each chunk
 
-<img src="https://latex.codecogs.com/gif.latex?x(t)=A&plus;Bt." /> 
+$A+Bt$
 
 What is the variance of the collection of all the linear components, <img src="https://render.githubusercontent.com/render/math?math=B">? This statistic has applications in stochastic modelling, see:
 
@@ -17,9 +17,9 @@ library(rmatio)
 
 For this example, we will consider the Ornstein-Ulhenbeck process, 
 
-<img src="https://latex.codecogs.com/gif.latex?dx_t=-\gamma&space;x_t&space;dt&space;&plus;&space;\sqrt{D}dW_t" /> 
+$dx_t=-\gamma x_t dt + \sqrt{D}dW_t$
 
-where <img src="https://render.githubusercontent.com/render/math?math=x_t"> is the amplitude as a function of time, <img src="https://render.githubusercontent.com/render/math?math=\gamma"> is the slope of the drift term, <img src="https://render.githubusercontent.com/render/math?math=\sqrt{D}"> is the amplitude of the noise, and <img src="https://render.githubusercontent.com/render/math?math=W_t"> is a [Wiener process](https://en.wikipedia.org/wiki/Wiener_process). A previously calculated realization of this process (calculated using the [Euler-Maruyama method](https://en.wikipedia.org/wiki/Euler–Maruyama_method)) is loaded.
+where $x_t$ is the amplitude as a function of time, $\gamma$ is the slope of the drift term, $\sqrt{D}$ is the amplitude of the noise, and $W_t$ is a [Wiener process](https://en.wikipedia.org/wiki/Wiener_process). A previously calculated realization of this process (calculated using the [Euler-Maruyama method](https://en.wikipedia.org/wiki/Euler–Maruyama_method)) is loaded.
 
 ```R
 data <- read.mat('tX_g1D1e0.dat')
@@ -43,11 +43,11 @@ slopeStds <- stdWindowSlopeCast(time, amplitude, windows)
 
 For the Ornstein-Ulhenbeck process, a closed form expression of slope variability can be derived.
 
-<img src="https://latex.codecogs.com/gif.latex?\sigma_B(w)&space;=&space;\sqrt{24\gamma&space;D&space;f(\gamma&space;w)}" /> 
+$\sigma_B(w) = \sqrt{24\gamma D f(\gamma w)}$
 
-where <img src="https://render.githubusercontent.com/render/math?math=f(x)"> is the function
+where $f(x)$ is the function
 
-<img src="https://latex.codecogs.com/gif.latex?f(x)&space;=&space;x^{-3}-3x^{-4}&plus;12x^{-6}-e^{-x}\Big(3x^{-4}&plus;12x^{-5}&plus;12x^{-6}\Big)." /> 
+$f(x) = x^{-3}-3x^{-4} + 12x^{-6}-e^{-x}\Big(3x^{-4} + 12x^{-5} + 12x^{-6}\Big).$
 
 ```R
 windowsTheory <- 10^seq(-1,2,len=50)
