@@ -3,7 +3,7 @@ An example of the calculation and displaying of Ito-Gauss plots. It is a measure
 
 $A+Bt$
 
-What is the variance of the collection of all the linear components, <img src="https://render.githubusercontent.com/render/math?math=B">? This statistic has applications in stochastic modelling, see:
+What is the variance of the collection of all the linear components, $B$? This statistic has applications in stochastic modelling, see:
 
 - [Variability of Millennial‐Scale Trends in the Geomagnetic Axial Dipole, Buffett et al. (2019)](https://doi.org/10.1029/2019GL085909)
 - [Decadal global temperature variability increases strongly with climate sensitivity, Nijsse et al. (2019)](https://doi.org/10.1038/s41558-019-0527-4)
